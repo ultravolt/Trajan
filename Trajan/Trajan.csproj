@@ -41,13 +41,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionMarker.cs" />
+    <Compile Include="Board.cs" />
+    <Compile Include="BonusStack.cs" />
+    <Compile Include="BonusTile.cs" />
     <Compile Include="CommodityCard.cs" />
     <Compile Include="CommodityDeck.cs" />
+    <Compile Include="ConstructionStack.cs" />
+    <Compile Include="ConstructionTile.cs" />
+    <Compile Include="DemandStack.cs" />
+    <Compile Include="DemandTile.cs" />
+    <Compile Include="ForumActionTray.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="LaborActionTray.cs" />
     <Compile Include="LeaderToken.cs" />
+    <Compile Include="ListExtensions.cs" />
+    <Compile Include="MilitaryActionTray.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerToken.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SenateActionTray.cs" />
+    <Compile Include="ShippingActionTray.cs" />
+    <Compile Include="TrajanActionTray.cs" />
+    <Compile Include="TrajanStack.cs" />
+    <Compile Include="TrajanTile.cs" />
+    <Compile Include="Tray.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -17,22 +17,56 @@ namespace Trajan
             BROWN
         }
         public int Score { get; set; }
-        public ActionMarker[] ActionMarkers { get; set; }
+        //public ActionMarker[] ActionMarkers { get; set; }
         public PlayerToken[] PlayerTokens { get; set; }
         public LeaderToken LeaderToken { get; set; }
-        public Player()
+        public List<BonusTile> BonusTiles { get; set; }
+
+        public Tray[] Trays { get; set; }
+        public Game Game { get; private set; }
+
+        public Player(Game game)
         {
+            this.Game = game;
+            this.BonusTiles = new List<BonusTile>();
             this.LeaderToken = new LeaderToken();
             this.PlayerTokens = new PlayerToken[PLAYER_TOKEN_COUNT];
             for (int i = 0; i < PLAYER_TOKEN_COUNT; i++)
                 this.PlayerTokens[i] = new PlayerToken();
             var amc = new List<ActionMarker.COLOR> { ActionMarker.COLOR.BLUE, ActionMarker.COLOR.GREEN, ActionMarker.COLOR.ORANGE, ActionMarker.COLOR.PINK, ActionMarker.COLOR.WHITE, ActionMarker.COLOR.YELLOW };
-            ActionMarkers = new ActionMarker[amc.Count * 2];
+            var am = new List<ActionMarker>();// new ActionMarker[amc.Count * 2];
             for (int i=0;i<amc.Count;i++)
             {
-                this.ActionMarkers[i * 2] = new ActionMarker(amc[i]);
-                this.ActionMarkers[(i * 2) + 1] = new ActionMarker(amc[i]);
+                am.Add(new ActionMarker(amc[i]));
+                am.Add(new ActionMarker(amc[i]));
             }
+            {
+                int i = 0;
+                Trays = new Tray[6];
+                Trays[i] = new ShippingActionTray(this);
+                Trays[++i] = new ForumActionTray(this);
+                Trays[++i] = new MilitaryActionTray(this);
+                Trays[++i] = new SenateActionTray(this);
+                Trays[++i] = new TrajanActionTray(this);
+                Trays[++i] = new LaborActionTray(this);
+            }
+            //Randomly distribute the Action Markers to the trays
+            //TODO: This should be player's choice
+            ListExtensions.Shuffle(am);
+            var sam = new Stack<ActionMarker>(am);
+            {
+                int i = 0;
+                while (sam.Any())
+                {
+                    Trays[i].ActionMarkers.Add(sam.Pop());
+                    Trays[i].ActionMarkers.Add(sam.Pop());
+                    i++;
+                }
+            }
+
+
+
+
         }
     }
 }

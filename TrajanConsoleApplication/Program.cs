@@ -12,7 +12,7 @@ namespace TrajanConsoleApplication
         static void Main(string[] args)
         {
             using (var game=new Game(Game.NUMBER_OF_PLAYERS.FOUR))
-            {
+            { 
                 Debug.WriteLine(game);
             }
 
