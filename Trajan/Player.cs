@@ -43,12 +43,12 @@ namespace Trajan
             {
                 int i = 0;
                 Trays = new Tray[6];
-                Trays[i] = new ShippingActionTray(this);
-                Trays[++i] = new ForumActionTray(this);
-                Trays[++i] = new MilitaryActionTray(this);
-                Trays[++i] = new SenateActionTray(this);
-                Trays[++i] = new TrajanActionTray(this);
-                Trays[++i] = new LaborActionTray(this);
+                Trays[i] = new ShippingActionTray(this, i);
+                Trays[++i] = new ForumActionTray(this, i);
+                Trays[++i] = new MilitaryActionTray(this, i);
+                Trays[++i] = new SenateActionTray(this, i);
+                Trays[++i] = new TrajanActionTray(this, i);
+                Trays[++i] = new LaborActionTray(this, i);
             }
             //Randomly distribute the Action Markers to the trays
             //TODO: This should be player's choice

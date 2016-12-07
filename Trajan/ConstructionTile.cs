@@ -9,6 +9,7 @@ namespace Trajan
     public class ConstructionTile
     {
         public TYPE ConstructionType { get; private set; }
+        public int PointValue { get; private set; }
 
         public enum TYPE
         {
@@ -19,14 +20,15 @@ namespace Trajan
             WINDOW
         }
 
-        public ConstructionTile(ConstructionTile.TYPE type)
+        public ConstructionTile(ConstructionTile.TYPE type, int pointValue)
         {
+            this.PointValue = pointValue;
             this.ConstructionType = type;
         }
 
         public override string ToString()
         {
-            return Enum.GetName(typeof(ConstructionTile.TYPE), this.ConstructionType);
+            return $@"{Enum.GetName(typeof(ConstructionTile.TYPE), this.ConstructionType)} {this.PointValue}";
         }
     }
 }
